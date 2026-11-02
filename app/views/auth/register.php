@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — LeadFlow SaaS</title>
+  <meta name="description" content="Register for LeadFlow - Enterprise-grade Lead Management Platform for modern sales organizations.">
+  
+  <!-- Favicon & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom Design System Stylesheet -->
+  <link rel="stylesheet" href="/leadflow/assets/css/style.css">
+</head>
+<body>
+
+  <div class="auth-wrapper">
+    <!-- Floating Background Orbs -->
+    <div class="auth-bg-orb auth-bg-orb-1"></div>
+    <div class="auth-bg-orb auth-bg-orb-2"></div>
+    <div class="auth-bg-orb auth-bg-orb-3"></div>
+
+    <!-- Left Section: Hero & Value Proposition -->
+    <section class="auth-hero-section">
+      <div class="auth-hero-top">
+        <a href="/leadflow/login" class="brand-logo mb-4">
+          <div class="brand-icon">
+            <i class="bi bi-intersect"></i>
+          </div>
+          <span class="brand-name">Lead<span class="text-cyan">Flow</span></span>
+        </a>
+      </div>
+
+      <div class="auth-hero-middle my-auto py-4">
+        <div class="badge bg-cyan-subtle text-cyan border border-cyan border-opacity-25 px-3 py-2 rounded-pill mb-3 fs-7 fw-semibold">
+          <i class="bi bi-stars me-1 text-purple"></i> Join 1,200+ Sales Teams
+        </div>
+        
+        <h1 class="display-5 fw-bold text-main lh-tight mb-3">
+          Scale Your Sales Pipeline <br>
+          <span style="background: linear-gradient(135deg, #22D3EE 0%, #7C3AED 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Without The Chaos
+          </span>
+        </h1>
+        
+        <p class="text-secondary fs-6 mb-4 col-lg-10">
+          Equip your sales reps with intuitive lead stages, intelligent follow-up reminders, and executive conversion analytics.
+        </p>
+
+        <!-- Feature List -->
+        <div class="d-flex flex-column gap-3 mb-4">
+          <div class="d-flex align-items-center gap-3">
+            <div class="kpi-icon-box kpi-icon-cyan" style="width:36px; height:36px; font-size:1rem;">
+              <i class="bi bi-funnel-fill"></i>
+            </div>
+            <div>
+              <div class="text-main fw-semibold fs-7">End-to-End Pipeline Funnels</div>
+              <div class="text-muted fs-8">Track leads from initial inquiry to closed deal.</div>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center gap-3">
+            <div class="kpi-icon-box kpi-icon-purple" style="width:36px; height:36px; font-size:1rem;">
+              <i class="bi bi-bell-fill"></i>
+            </div>
+            <div>
+              <div class="text-main fw-semibold fs-7">Smart Follow-up Reminders</div>
+              <div class="text-muted fs-8">Never let a promising client slip through the cracks.</div>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center gap-3">
+            <div class="kpi-icon-box kpi-icon-green" style="width:36px; height:36px; font-size:1rem;">
+              <i class="bi bi-graph-up-arrow"></i>
+            </div>
+            <div>
+              <div class="text-main fw-semibold fs-7">Performance Intelligence</div>
+              <div class="text-muted fs-8">Real-time reports for data-driven decisions.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-hero-bottom text-muted fs-8">
+        &copy; 2026 LeadFlow Technologies Inc. Standard Employee Access Tier.
+      </div>
+    </section>
+
+    <!-- Right Section: Register Form Card -->
+    <section class="auth-form-section">
+      <div class="auth-card">
+        <!-- Mobile Logo fallback -->
+        <div class="d-lg-none mb-4 text-center">
+          <a href="/leadflow/login" class="brand-logo justify-content-center">
+            <div class="brand-icon"><i class="bi bi-intersect"></i></div>
+            <span class="brand-name">Lead<span class="text-cyan">Flow</span></span>
+          </a>
+        </div>
+
+        <div class="mb-3">
+          <h2 class="h4 fw-bold text-main mb-1">Create Your Account</h2>
+          <p class="text-secondary fs-7 mb-0">Join your organization workspace as a Sales Representative.</p>
+        </div>
+
+        <div class="alert alert-dark border border-secondary border-opacity-25 py-2 px-3 mb-3 fs-8 text-secondary d-flex align-items-center gap-2">
+          <i class="bi bi-shield-lock text-cyan fs-6 flex-shrink-0"></i>
+          <span>Public signup assigns a standard <strong>Employee</strong> role. Admins manage permissions internally.</span>
+        </div>
+
+        <!-- Feedback Alert -->
+        <?php if (!empty($error)): ?>
+          <div class="alert alert-danger border-0 bg-danger-subtle text-danger py-2 px-3 mb-3 fs-8 d-flex align-items-center gap-2">
+            <i class="bi bi-exclamation-triangle-fill fs-6 flex-shrink-0"></i>
+            <div><?= htmlspecialchars($error) ?></div>
+          </div>
+        <?php endif; ?>
+
+        <!-- Registration Form -->
+        <form id="registerForm" method="POST" action="/leadflow/register">
+          <!-- Full Name -->
+          <div class="mb-3">
+            <label for="regName" class="form-label">Full Name</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-person"></i></span>
+              <input type="text" id="regName" name="name" class="form-control" placeholder="Sarah Jenkins" required autocomplete="name" value="<?= htmlspecialchars($old['name'] ?? '') ?>">
+            </div>
+            <div class="invalid-feedback">Please enter your full name.</div>
+          </div>
+
+          <!-- Email Address -->
+          <div class="mb-3">
+            <label for="regEmail" class="form-label">Work Email</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+              <input type="email" id="regEmail" name="email" class="form-control" placeholder="sarah@company.com" required autocomplete="email" value="<?= htmlspecialchars($old['email'] ?? '') ?>">
+            </div>
+            <div class="invalid-feedback">Please enter a valid work email.</div>
+          </div>
+
+          <!-- Password with Strength Meter -->
+          <div class="mb-3">
+            <label for="regPassword" class="form-label">Password</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-lock"></i></span>
+              <input type="password" id="regPassword" name="password" class="form-control" placeholder="At least 8 characters" required autocomplete="new-password">
+              <button class="btn btn-glass toggle-password-btn" type="button" data-target="regPassword" aria-label="Toggle password visibility">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <!-- Strength Meter Visual -->
+            <div class="strength-meter-bar">
+              <div class="strength-step"></div>
+              <div class="strength-step"></div>
+              <div class="strength-step"></div>
+              <div class="strength-step"></div>
+            </div>
+            <div id="strengthText" class="form-text mt-1 fs-8 text-muted">Password must be at least 8 characters</div>
+            <div class="invalid-feedback">Password must be at least 8 characters.</div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="mb-3">
+            <label for="regConfirmPassword" class="form-label">Confirm Password</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-shield-check"></i></span>
+              <input type="password" id="regConfirmPassword" name="password_confirmation" class="form-control" placeholder="Re-type password" required autocomplete="new-password">
+              <button class="btn btn-glass toggle-password-btn" type="button" data-target="regConfirmPassword" aria-label="Toggle password visibility">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <div class="invalid-feedback">Passwords do not match.</div>
+          </div>
+
+          <!-- Terms & Conditions Checkbox -->
+          <div class="mb-4">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="regTerms" name="terms" required>
+              <label class="form-check-label fs-8" for="regTerms">
+                I agree to the <a href="#" class="text-cyan" onclick="if(typeof showToast === 'function') showToast('Terms', 'Demo Terms of Service agreement.', 'info'); return false;">Terms of Service</a> and <a href="#" class="text-cyan" onclick="if(typeof showToast === 'function') showToast('Privacy', 'Demo Privacy Policy agreement.', 'info'); return false;">Privacy Policy</a>.
+              </label>
+              <div class="invalid-feedback">You must accept the terms before creating an account.</div>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" id="regSubmitBtn" class="btn btn-primary-glow w-100 py-2 mb-3">
+            <span>Create Account</span>
+            <i class="bi bi-person-check"></i>
+          </button>
+
+          <!-- Back to Login -->
+          <div class="text-center text-secondary fs-8">
+            Already have an account? 
+            <a href="/leadflow/login" class="text-cyan fw-semibold ms-1">Sign In</a>
+          </div>
+        </form>
+
+        <!-- System Architecture Notice -->
+        <div class="mt-4 pt-3 border-top border-white border-opacity-10 text-center">
+          <span class="text-muted fs-8">
+            <i class="bi bi-shield-check text-purple me-1"></i> Powered by LeadFlow Core PHP MVC &amp; MySQL
+          </span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Toast Notifications Container -->
+  <div id="toastContainer" class="toast-container-custom"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/leadflow/assets/js/app.js"></script>
+  <script src="/leadflow/assets/js/auth.js"></script>
+</body>
+</html>

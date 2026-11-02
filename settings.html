@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings & Profile — LeadFlow SaaS</title>
+  <meta name="description" content="Manage personal profile, password security, notification preferences, and system appearance.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom Design System Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Backdrop for Mobile Sidebar -->
+  <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+  <div class="app-wrapper">
+    <!-- Collapsible Sidebar -->
+    <aside class="app-sidebar" id="appSidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon">
+            <i class="bi bi-intersect"></i>
+          </div>
+          <span class="brand-name">Lead<span class="text-cyan">Flow</span></span>
+        </a>
+        <button type="button" class="btn btn-glass btn-icon d-none d-lg-flex" id="sidebarToggleBtn" title="Toggle Sidebar">
+          <i class="bi bi-chevron-bar-left text-muted"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-menu">
+        <div class="menu-section-label">Main Menu</div>
+        
+        <a href="index.html" class="nav-link-custom">
+          <i class="bi bi-grid-1x2-fill"></i>
+          <span class="nav-text">Overview</span>
+        </a>
+        
+        <a href="leads.html" class="nav-link-custom">
+          <i class="bi bi-people-fill"></i>
+          <span class="nav-text">All Leads</span>
+          <span class="badge bg-purple-subtle text-purple ms-auto nav-badge fs-8 fw-semibold">24</span>
+        </a>
+
+        <a href="followups.html" class="nav-link-custom">
+          <i class="bi bi-calendar-check-fill"></i>
+          <span class="nav-text">Follow-ups</span>
+          <span class="badge bg-cyan-subtle text-cyan ms-auto nav-badge fs-8 fw-semibold">3</span>
+        </a>
+
+        <div class="menu-section-label mt-3">Team & Insights</div>
+
+        <a href="users.html" class="nav-link-custom">
+          <i class="bi bi-person-badge-fill"></i>
+          <span class="nav-text">Users & Team</span>
+        </a>
+
+        <a href="reports.html" class="nav-link-custom">
+          <i class="bi bi-bar-chart-fill"></i>
+          <span class="nav-text">Reports & Analytics</span>
+        </a>
+
+        <a href="settings.html" class="nav-link-custom active">
+          <i class="bi bi-gear-fill"></i>
+          <span class="nav-text">Settings</span>
+        </a>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="avatar avatar-online">AM</div>
+          <div class="user-details overflow-hidden">
+            <div class="fw-semibold text-main fs-7 text-truncate">Alex Morgan</div>
+            <div class="text-muted fs-8 text-truncate">Sales Director</div>
+          </div>
+          <a href="login.html" class="btn btn-glass btn-icon ms-auto" title="Sign Out">
+            <i class="bi bi-box-arrow-right text-danger-custom fs-7"></i>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="app-main">
+      <!-- Sticky Topbar Navigation -->
+      <header class="app-topbar">
+        <div class="d-flex align-items-center gap-3">
+          <button type="button" class="btn btn-glass btn-icon d-lg-none" id="mobileSidebarToggle" aria-label="Toggle mobile menu">
+            <i class="bi bi-list fs-5"></i>
+          </button>
+
+          <div class="d-none d-sm-block">
+            <div class="breadcrumb-custom">
+              <a href="index.html">LeadFlow</a>
+              <span class="separator"><i class="bi bi-chevron-right fs-8"></i></span>
+              <span class="text-secondary">Workspace</span>
+              <span class="separator"><i class="bi bi-chevron-right fs-8"></i></span>
+              <span class="text-cyan">Settings</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="topbar-search d-none d-md-block">
+          <i class="bi bi-search search-icon"></i>
+          <input type="text" id="globalSearchInput" class="form-control" placeholder="Search settings, preferences...">
+          <span class="search-shortcut">Ctrl+K</span>
+        </div>
+
+        <div class="topbar-actions">
+          <div class="dropdown">
+            <button class="btn btn-glass p-1 ps-2 pe-3 d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="avatar avatar-sm">AM</div>
+              <span class="fs-7 fw-semibold text-main d-none d-sm-inline">Alex Morgan</span>
+              <i class="bi bi-chevron-down fs-8 text-muted"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark-custom">
+              <li class="px-3 py-2 border-bottom border-white border-opacity-10">
+                <div class="fw-semibold text-main fs-7">Alex Morgan</div>
+                <div class="text-muted fs-8">alex.morgan@leadflow.io</div>
+              </li>
+              <li><a class="dropdown-item dropdown-item-custom" href="settings.html"><i class="bi bi-person"></i> My Profile</a></li>
+              <li><a class="dropdown-item dropdown-item-custom" href="settings.html"><i class="bi bi-gear"></i> Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item dropdown-item-custom text-danger-custom" href="login.html"><i class="bi bi-box-arrow-right"></i> Sign Out</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Settings Page Body -->
+      <main class="page-content">
+        <!-- Page Header -->
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Account & System Preferences</h1>
+            <p class="text-secondary fs-7 mb-0">Configure your profile details, password security, notification rules, and workspace options.</p>
+          </div>
+          <div>
+            <button type="button" class="btn btn-glass" onclick="resetDemoData()">
+              <i class="bi bi-arrow-clockwise me-1"></i> Reset Demo Workspace Data
+            </button>
+          </div>
+        </div>
+
+        <div class="alert alert-dark border border-secondary border-opacity-25 py-2 px-3 mb-4 fs-8 text-secondary d-flex align-items-center gap-2">
+          <i class="bi bi-info-circle text-cyan fs-6"></i>
+          <span>
+            <strong>Demo Architecture Notice:</strong> Profile updates and password changes are simulated in the client demo. In production, these forms will post to PHP MVC <code>ProfileController@update</code> with MySQL persistence and CSRF verification.
+          </span>
+        </div>
+
+        <div class="row g-4">
+          <!-- Left Column: Navigation Tabs -->
+          <div class="col-lg-3">
+            <div class="saas-card p-2">
+              <div class="nav flex-column nav-pills nav-pills-custom" id="settingsTab" role="tablist">
+                <button class="nav-link active text-start py-2 px-3 mb-1" id="tab-profile" data-bs-toggle="pill" data-bs-target="#content-profile" type="button" role="tab">
+                  <i class="bi bi-person-circle me-2 text-cyan"></i>Personal Profile
+                </button>
+                <button class="nav-link text-start py-2 px-3 mb-1" id="tab-security" data-bs-toggle="pill" data-bs-target="#content-security" type="button" role="tab">
+                  <i class="bi bi-shield-lock me-2 text-purple"></i>Password & Security
+                </button>
+                <button class="nav-link text-start py-2 px-3 mb-1" id="tab-notifications" data-bs-toggle="pill" data-bs-target="#content-notifications" type="button" role="tab">
+                  <i class="bi bi-bell me-2 text-warning"></i>Notifications
+                </button>
+                <button class="nav-link text-start py-2 px-3 mb-1" id="tab-display" data-bs-toggle="pill" data-bs-target="#content-display" type="button" role="tab">
+                  <i class="bi bi-palette me-2 text-info"></i>Display & System
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Tab Panes -->
+          <div class="col-lg-9">
+            <div class="tab-content" id="settingsTabContent">
+              
+              <!-- 1. Profile Tab -->
+              <div class="tab-pane fade show active" id="content-profile" role="tabpanel">
+                <div class="saas-card p-3 p-md-4">
+                  <h3 class="h6 fw-bold text-main mb-1">Personal Information</h3>
+                  <p class="text-secondary fs-8 mb-4">Update your workspace identity and contact information.</p>
+
+                  <form id="profileForm" method="POST" action="settings/profile" onsubmit="event.preventDefault(); showToast('Profile Saved (Demo)', 'In production, changes are persisted via PHP ProfileController.', 'success');">
+                    <!-- Avatar Preview Row -->
+                    <div class="d-flex align-items-center gap-4 mb-4 pb-4 border-bottom border-white border-opacity-10">
+                      <div class="avatar avatar-lg" id="profileAvatarBig" style="font-size: 1.5rem;">AM</div>
+                      <div>
+                        <div class="fw-semibold text-main fs-7 mb-1">Profile Avatar</div>
+                        <div class="d-flex align-items-center gap-2">
+                          <label for="profileAvatarUpload" class="btn btn-glass btn-sm">
+                            <i class="bi bi-upload"></i> Change Photo
+                          </label>
+                          <input type="file" id="profileAvatarUpload" class="d-none" accept="image/*" onchange="showToast('Avatar Selected', 'Live image preview updated.', 'info')">
+                          <button type="button" class="btn btn-glass btn-sm text-danger-custom" onclick="showToast('Avatar Removed', 'Reverted to initials avatar.', 'warning')">Remove</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label for="profileFullName" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="profileFullName" name="name" value="Alex Morgan" required>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label for="profileEmail" class="form-label">Work Email</label>
+                        <input type="email" class="form-control" id="profileEmail" name="email" value="alex.morgan@leadflow.io" required>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label for="profilePhone" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" id="profilePhone" name="phone" value="+1 (555) 789-0123">
+                      </div>
+
+                      <div class="col-md-6">
+                        <label for="profileJobTitle" class="form-label">Job Title / Role</label>
+                        <input type="text" class="form-control" id="profileJobTitle" name="job_title" value="Sales Director">
+                      </div>
+
+                      <div class="col-12">
+                        <label for="profileBio" class="form-label">Short Biography</label>
+                        <textarea class="form-control" id="profileBio" name="bio" rows="3">Directing North American enterprise pipeline expansion and team coaching.</textarea>
+                      </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-top border-white border-opacity-10 d-flex justify-content-end">
+                      <button type="submit" class="btn btn-primary-glow">
+                        <i class="bi bi-check-lg"></i> Save Profile Changes
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- 2. Password & Security Tab -->
+              <div class="tab-pane fade" id="content-security" role="tabpanel">
+                <div class="saas-card p-3 p-md-4">
+                  <h3 class="h6 fw-bold text-main mb-1">Password & Authentication</h3>
+                  <p class="text-secondary fs-8 mb-4">Ensure your account uses a strong, unique password.</p>
+
+                  <form id="passwordForm" method="POST" action="settings/password" onsubmit="event.preventDefault(); showToast('Security Updated (Demo)', 'Password change requires backend PHP hashing verification.', 'info');">
+                    <div class="row g-3 mb-4">
+                      <div class="col-12">
+                        <label for="currentPassword" class="form-label">Current Password</label>
+                        <div class="input-group">
+                          <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                          <input type="password" class="form-control" id="currentPassword" name="current_password" placeholder="••••••••" required>
+                          <button class="btn btn-glass toggle-password-btn" type="button" data-target="currentPassword"><i class="bi bi-eye"></i></button>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label for="newPassword" class="form-label">New Password</label>
+                        <div class="input-group">
+                          <span class="input-group-text"><i class="bi bi-key"></i></span>
+                          <input type="password" class="form-control" id="newPassword" name="new_password" placeholder="Minimum 8 characters" required>
+                          <button class="btn btn-glass toggle-password-btn" type="button" data-target="newPassword"><i class="bi bi-eye"></i></button>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label for="confirmNewPassword" class="form-label">Confirm New Password</label>
+                        <div class="input-group">
+                          <span class="input-group-text"><i class="bi bi-shield-check"></i></span>
+                          <input type="password" class="form-control" id="confirmNewPassword" name="new_password_confirmation" placeholder="Re-type new password" required>
+                          <button class="btn btn-glass toggle-password-btn" type="button" data-target="confirmNewPassword"><i class="bi bi-eye"></i></button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="p-3 rounded-3 mb-4" style="background: rgba(16, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.06);">
+                      <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                          <div class="fw-semibold text-main fs-7">Two-Factor Authentication (2FA)</div>
+                          <div class="text-secondary fs-8">Require an authenticator code when logging in from new devices.</div>
+                        </div>
+                        <div class="form-check form-switch fs-5">
+                          <input class="form-check-input" type="checkbox" role="switch" id="twoFactorSwitch" onchange="showToast('2FA Setting', 'Two-factor setting toggled in demo.', 'info')">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                      <button type="submit" class="btn btn-primary-glow">
+                        <i class="bi bi-shield-check"></i> Update Password
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- 3. Notifications Tab -->
+              <div class="tab-pane fade" id="content-notifications" role="tabpanel">
+                <div class="saas-card p-3 p-md-4">
+                  <h3 class="h6 fw-bold text-main mb-1">Notification Preferences</h3>
+                  <p class="text-secondary fs-8 mb-4">Choose how and when you receive lead activity updates.</p>
+
+                  <div class="d-flex flex-column gap-3 mb-4">
+                    <div class="p-3 rounded-3 d-flex align-items-center justify-content-between" style="background: rgba(16, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.06);">
+                      <div>
+                        <div class="fw-semibold text-main fs-7">New Lead Assigned</div>
+                        <div class="text-secondary fs-8">Receive an instant email when a prospect is assigned to your pipeline.</div>
+                      </div>
+                      <div class="form-check form-switch fs-5">
+                        <input class="form-check-input" type="checkbox" role="switch" checked>
+                      </div>
+                    </div>
+
+                    <div class="p-3 rounded-3 d-flex align-items-center justify-content-between" style="background: rgba(16, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.06);">
+                      <div>
+                        <div class="fw-semibold text-main fs-7">Follow-up Due Alerts</div>
+                        <div class="text-secondary fs-8">Get notified 30 minutes before a scheduled meeting or touchpoint.</div>
+                      </div>
+                      <div class="form-check form-switch fs-5">
+                        <input class="form-check-input" type="checkbox" role="switch" checked>
+                      </div>
+                    </div>
+
+                    <div class="p-3 rounded-3 d-flex align-items-center justify-content-between" style="background: rgba(16, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.06);">
+                      <div>
+                        <div class="fw-semibold text-main fs-7">Daily Pipeline Digest</div>
+                        <div class="text-secondary fs-8">Morning summary email with active opportunities and overdue actions.</div>
+                      </div>
+                      <div class="form-check form-switch fs-5">
+                        <input class="form-check-input" type="checkbox" role="switch">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary-glow" onclick="showToast('Preferences Saved', 'Notification rules updated.', 'success')">
+                      <i class="bi bi-check-lg"></i> Save Preferences
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. Display & System Tab -->
+              <div class="tab-pane fade" id="content-display" role="tabpanel">
+                <div class="saas-card p-3 p-md-4">
+                  <h3 class="h6 fw-bold text-main mb-1">System & Interface Options</h3>
+                  <p class="text-secondary fs-8 mb-4">Customize regional formatting and data table defaults.</p>
+
+                  <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                      <label for="currencySetting" class="form-label">Currency Symbol</label>
+                      <select class="form-select" id="currencySetting">
+                        <option value="USD" selected>USD ($) — United States Dollar</option>
+                        <option value="EUR">EUR (€) — Euro</option>
+                        <option value="GBP">GBP (£) — British Pound</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="dateFormatSetting" class="form-label">Date Format</label>
+                      <select class="form-select" id="dateFormatSetting">
+                        <option value="YYYY-MM-DD" selected>YYYY-MM-DD (ISO)</option>
+                        <option value="MM/DD/YYYY">MM/DD/YYYY (US)</option>
+                        <option value="DD/MM/YYYY">DD/MM/YYYY (UK/EU)</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="defaultPageSize" class="form-label">Default Table Rows</label>
+                      <select class="form-select" id="defaultPageSize">
+                        <option value="6" selected>6 leads per page</option>
+                        <option value="12">12 leads per page</option>
+                        <option value="25">25 leads per page</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="themeMode" class="form-label">Interface Theme</label>
+                      <select class="form-select" id="themeMode">
+                        <option value="dark" selected>SaaS Deep Dark (#0B1020)</option>
+                        <option value="high-contrast">High Contrast Dark</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary-glow" onclick="showToast('Display Settings', 'Interface preferences saved.', 'success')">
+                      <i class="bi bi-check-lg"></i> Apply System Settings
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container-custom"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>
